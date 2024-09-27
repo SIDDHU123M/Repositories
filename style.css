@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Basic Page Styling */
+body {
+    font-family: 'Roboto', sans-serif;  /* Updated font */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;  /* Light background */
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: #2c3e50;
+}
+
+header {
+    background-color: #4a90e2;  /* Updated header color */
+    padding: 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;  /* Increased font size for better visibility */
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Added shadow for depth */
+    border-radius: 8px;  /* Rounded corners */
+    background-color: white;  /* White background for better readability */
+}
+
+p, li {
+    margin-bottom: 15px;
+}
+
+/* Styling Links */
+a {
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Code Block Styling */
+pre {
+    background-color: #f3f4f6;  /* Light background for code blocks */
+    color: #333;  /* Dark text color for readability */
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: auto;
+    border-left: 4px solid #4a90e2;  /* Left border for emphasis */
+    font-family: 'Courier New', Courier, monospace;  /* Monospace font for code */
+}
+
+code {
+    background-color: #e7f0ff;  /* Slightly darker background for inline code */
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #e74c3c;
+    font-size: 0.9em;
+}
+
+/* Copy Button for Code Blocks */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #4a90e2;  /* Button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Markdown-like Blockquote */
+blockquote {
+    background-color: #f0f4ff;  /* Light blue background for blockquotes */
+    border-left: 10px solid #4a90e2;
+    margin: 1.5em 10px;
+    padding: 1.5em 10px;
+    color: #666;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    background: none;
+}
+
+/* Dark Theme Styles */
+.dark-mode {
+    background-color: #121212;  /* Darker background for dark mode */
+    color: #e0e0e0;  /* Light text color for better readability */
+}
+
+.dark-mode header {
+    background-color: #1a1a1a;  /* Darker header */
+}
+
+.dark-mode main {
+    background-color: #1e1e1e;  /* Dark background for main content */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);  /* Deeper shadow for depth */
+}
+
+.dark-mode pre {
+    background-color: #2e2e2e;  /* Dark background for code blocks */
+    border-left: 4px solid #4caf50;  /* Bright green border for code blocks in dark mode */
+    color: #e0e0e0;  /* Light text color for code */
+}
+
+.dark-mode code {
+    background-color: #3a3a3a;  /* Darker background for inline code */
+    color: #ffcc00;  /* Bright yellow for inline code for contrast */
+}
+
+.dark-mode a {
+    color: #90caf9;  /* Lighter blue link color in dark mode */
+}
+
+.dark-mode a:hover {
+    color: #64b5f6;  /* Slightly brighter hover color */
+}
+
+.dark-mode h1, h2, h3, h4 {
+    color: #209e96;
+}
+/* Responsive Design */
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    pre {
+        font-size: 0.8em;
+    }
+} 
