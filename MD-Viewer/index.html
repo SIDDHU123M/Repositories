@@ -12,141 +12,164 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      transition: background-color 0.3s, color 0.3s;
-    }
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-    #markdownContent {
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-    }
+#markdownContent {
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
 
-    #markdownContent h1, #markdownContent h2, #markdownContent h3 {
-      color: #007bff;
-    }
+#markdownContent h1 {
+  color: #007bff;
+}
 
-    #markdownContent code {
-      background-color: #f8f9fa;
-      color: #333; /* Dark text for code blocks */
-      padding: 2px 5px;
-      border-radius: 4px;
-    }
+#markdownContent h2 {
+  color: #0056b3;
+}
 
-    pre {
-      background-color: #2d2d2d;
-      color: #f8f9fa; /* Light text for dark background */
-      padding: 15px;
-      border-radius: 6px;
-      position: relative;
-      overflow: auto;
-    }
+#markdownContent h3 {
+  color: #003f7f;
+}
 
-    .copy-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+#markdownContent code {
+  color: #d63384; /* Dark text for code blocks */
+  padding: 2px 5px;
+  border-radius: 4px;
+}
 
-    .copy-btn:hover {
-      background-color: #0056b3;
-    }
+pre {
+  background-color: #2d2d2d;
+  color: #f8f9fa; /* Light text for dark background */
+  padding: 15px;
+  border-radius: 6px;
+  position: relative;
+  overflow: auto;
+}
 
-    .btn-toggle, .btn-history {
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-    }
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-    .btn-toggle img, .btn-history img {
-      margin-right: 10px;
-    }
+.copy-btn:hover {
+  background-color: #0056b3;
+}
 
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #343a40;
-      color: #f8f9fa;
-    }
+.btn-toggle, .btn-history {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
 
-    body.dark-mode #markdownContent {
-      background-color: #495057;
-      color: #f8f9fa;
-    }
+.btn-toggle img, .btn-history img {
+  margin-right: 10px;
+}
 
-    body.dark-mode pre {
-      background-color: #212529;
-      color: #f8f9fa;
-    }
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
 
-    /* History List Styles */
-    #historyList {
-      background-color: #f0f0f0;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-      padding: 10px;
-      max-height: 300px;
-      overflow-y: auto;
-      display: none; /* Hidden by default */
-      z-index: 1000;
-    }
+body.dark-mode #markdownContent {
+  background-color: #495057;
+  color: #f8f9fa;
+}
 
-    .history-item {
-      padding: 10px;
-      border: 1px solid #007bff;
-      border-radius: 5px;
-      margin-bottom: 5px;
-      background-color: #e9ecef;
-      color: #007bff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+body.dark-mode #markdownContent h1 {
+  color: #66b2ff;
+}
 
-    .history-item span {
-      flex-grow: 1;
-    }
+body.dark-mode #markdownContent h2 {
+  color: #4a90e2;
+}
 
-    .history-item button {
-      background-color: transparent;
-      color: #007bff;
-      border: none;
-      cursor: pointer;
-      margin-left: 10px;
-    }
+body.dark-mode #markdownContent h3 {
+  color: #357ab7;
+}
 
-    .history-item button:hover {
-      text-decoration: underline;
-    }
+body.dark-mode #markdownContent code {
+  color: #ff79c6; /* Light text for code blocks */
+}
 
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
+body.dark-mode pre {
+  background-color: #212529;
+  color: #f8f9fa;
+}
 
-    @media (max-width: 768px) {
-      .button-group {
-        flex-direction: column;
-      }
+/* History List Styles */
+#historyList {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none; /* Hidden by default */
+  z-index: 1000;
+}
 
-      .btn-toggle, .btn-history {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-  </style>
+.history-item {
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: #e9ecef;
+  color: #007bff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-item span {
+  flex-grow: 1;
+}
+
+.history-item button {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.history-item button:hover {
+  text-decoration: underline;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn-toggle, .btn-history {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+</style>
 </head>
 <body>
 
