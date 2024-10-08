@@ -1,110 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('e.png') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Arial', sans-serif;
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("e.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Arial", sans-serif;
+      }
+
+      .container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        text-align: center;
+        width: 80%;
+        max-width: 400px;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      h1 {
+        font-size: 3em;
+        color: #fff;
+        margin: 0;
+        animation: textGlow 1.5s ease-in-out infinite alternate;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      button:hover {
+        background: rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 20px;
-            text-align: center;
-            width: 80%;
-            max-width: 400px;
-            animation: fadeIn 1.5s ease-in-out;
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        h1 {
-            font-size: 3em;
-            color: #fff;
-            margin: 0;
-            animation: textGlow 1.5s ease-in-out infinite alternate;
+        to {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 1);
         }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scale(1.05);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes textGlow {
-            from {
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            }
-
-            to {
-                text-shadow: 0 0 20px rgba(255, 255, 255, 1);
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <input type="text" placeholder="hrs:mins" id="getTime">
-        <h1 id="time">HH:MM:SS</h1>
+      <input type="text" placeholder="hrs:mins" id="getTime" />
+      <h1 id="time">HH:MM:SS</h1>
 
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="stop">Clear</button>
     </div>
 
     <script>
-        let start = document.querySelector('#start')
-        let [hours, minutes, seconds] = document.querySelector('#getTime').value.split(':')
+      let start = document.querySelector("#start");
+      let stop = document.querySelector("#stop");
+      let pause = document.querySelector("#pause");
+      let input = document.querySelector("#getTime");
 
-        start.addEventListener('click', () => {
-            const time = setInterval(() => {
-                document.querySelector('#time').innerHTML = `${hours}:${minutes}:${seconds}`;
-                if(seconds == 0) {
-                    minues-= 1
-                } 
-                seconds -= 1
-            }, 1000);
-        })
-        document.querySelector('#stop').addEventListener('click', () => {
+      let isPaused = false;
+
+      input.addEventListener(
+        "keyup",
+        () => (document.querySelector("#time").innerHTML = input.value)
+      );
+
+      function Timer(array) {
+        let [hours, minutes, seconds] = array;
+        time = setInterval(() => {
+          document.querySelector(
+            "#time"
+          ).innerHTML = `${hours}:${minutes}:${seconds}`;
+          if (hours == 0 && minutes == 0 && seconds == 0) {
             clearInterval(time);
-        });
-    </script>
-</body>
+            document.querySelector("#time").innerHTML =
+              "Count Down has finished!";
+          } else {
+            if (seconds == 0) {
+              seconds = 59;
+              minutes--;
+            } else {
+              seconds--;
+            }
+            if (minutes < 0 && hours > 0) {
+              minutes = 59;
+              hours--;
+            }
+          }
+        }, 1000);
 
+        pause.addEventListener("click", () => {
+          let getPauseTime = document
+            .querySelector("#time")
+            .innerHTML.split(":")
+            .map((element) => Number(element));
+          if (!isPaused) {
+            clearInterval(time);
+            isPaused = true;
+          } else {
+            Timer(getPauseTime);
+            isPaused = false;
+          }
+        });
+
+        stop.addEventListener("click", () => {
+          clearInterval(time);
+          document.querySelector("#time").innerHTML = "00:00:00";
+        });
+      }
+
+      start.addEventListener("click", () => {
+        Timer(
+          document
+            .querySelector("#time")
+            .innerHTML.split(":")
+            .map((element) => Number(element))
+        );
+      });
+    </script>
+  </body>
 </html>
