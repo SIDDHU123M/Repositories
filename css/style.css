@@ -75,9 +75,8 @@ header {
     right: 1em;
     aspect-ratio: 1/1;
     width: 3.2em;
-    background-color: #333333;
+    background-color: #4a91e2;
     border-radius: 1em;
-    cursor: pointer;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.5s ease-in-out;
 }
@@ -93,7 +92,7 @@ header {
 .up-btn > a > svg {
     aspect-ratio: 1/1;
     width: 2.2em;
-    fill: white;
+    color: white;
 }
 
 main {
