@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "Dank Mono";
+    src: url("DankMono-Regular.otf") format("opentype"); /* Ensure the path is correct */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* Base Styles */
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    transition: all 0.5s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Roboto", sans-serif; /* Fallback to Roboto */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light background */
+    color: #333;
+    line-height: 1.6;
+    transition: all 0.5s ease-in-out;
+}
+
+header {
+    display: flex;
+    padding: 1em;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+    background-color: #4a91e2;
+    /* backdrop-filter: blur(0.4em); */
+    border-radius: 0 0 1em 1em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+    > h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+    > svg {
+        width: 2em;
+        cursor: pointer;
+    }
+}
+@media (min-width: 801px) {
+    header {
+        flex-direction: row;
+    }
+}
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        gap: 0.8em;
+    }
+}
+
+.up-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    aspect-ratio: 1/1;
+    width: 3.2em;
+    background-color: #4a91e2;
+    border-radius: 1em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+}
+
+.up-btn > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+}
+
+.up-btn > a > svg {
+    aspect-ratio: 1/1;
+    width: 2.2em;
+    color: white;
+}
+
+main {
+    padding: 1em;
+    max-width: 800px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    background-color: white;
+    transition: all 0.5s ease-in-out;
+}
+@media (min-width: 801px) {
+    main {
+        margin: 1em auto;
+    }
+}
+@media (max-width: 800px) {
+    main {
+        margin: 0.8em;
+    }
+}
+
+/* Links */
+a {
+    color: #4a90e2; /* Link color */
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3; /* Hover color */
+}
+
+/* Preformatted Code */
+pre {
+    position: relative;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: auto;
+    background-color: #f4f4f4; /* Light background for code blocks */
+    font-family: "Dank Mono", monospace; /* Custom font for code */
+}
+
+/* Code Styling */
+pre code {
+    font-family: "Dank Mono", monospace; /* Custom font for code */
+    font-weight: 700; /* Bold weight for code */
+    font-style: italic; /* Italic style for code */
+}
+
+/* Copy Button Styles */
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4caf50; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    transition: all 0.5s ease-in-out;
+}
+
+.copy-btn:hover {
+    background-color: #45a049; /* Hover color */
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #121212; /* Darker background for dark mode */
+    color: #e0e0e0; /* Light text color for better readability */
+}
+
+.dark-mode header {
+    background-color: #1a1a1a; /* Darker header */
+}
+
+.dark-mode main {
+    background-color: #1e1e1e; /* Dark background for main content */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
+}
+
+.dark-mode pre {
+    background-color: #2e2e2e; /* Dark background for code blocks */
+    border-left: 4px solid #4caf50; /* Bright green border for code blocks */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+    pre {
+        font-size: 0.9em;
+    }
+}

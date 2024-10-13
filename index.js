@@ -21,18 +21,21 @@ async function getData(item, page = 1) {
       newObj.push({
         title: jsonData.title,
         content: jsonData.content,
+        code: jsonData.code || "", // Assuming code is part of the JSON data
       });
     });
 
     div.innerHTML = "";
     newObj.forEach((element) => {
       div.innerHTML += `
-        <h1>${element.title}</h1>
-        <div>${element.content}</div>
-      `;
+              <h1>${element.title}</h1>
+              <div>${element.content}</div>
+              ${element.code ? `<code>${element.code}</code>` : ""}
+            `;
     });
 
     updatePaginationControls(item, page, data[item].length);
+    addCopyButtons(); // Add copy buttons to new code blocks
   } catch (error) {
     console.error("There has been a problem with your fetch operation:", error);
     div.innerHTML = "<p>Failed to load data. Please try again later.</p>";
@@ -55,6 +58,26 @@ function updatePaginationControls(item, page, totalItems) {
     nextButton.onclick = () => getData(item, page + 1);
     paginationControls.appendChild(nextButton);
   }
+}
+
+function addCopyButtons() {
+  document.querySelectorAll("code").forEach((codeBlock) => {
+    if (!codeBlock.querySelector(".copy-button")) {
+      let copyButton = document.createElement("button");
+      copyButton.className = "copy-button";
+      copyButton.innerText = "Copy";
+      copyButton.onclick = () => {
+        let codeText = codeBlock.childNodes[0].nodeValue; // Get only the code text
+        navigator.clipboard.writeText(codeText).then(() => {
+          copyButton.innerText = "Copied!";
+          setTimeout(() => {
+            copyButton.innerText = "Copy";
+          }, 2000);
+        });
+      };
+      codeBlock.appendChild(copyButton);
+    }
+  });
 }
 
 let folders = [
@@ -82,7 +105,14 @@ let folders = [
 
 folders.forEach((element) => {
   buttons.innerHTML += `<button class="button" onclick="getData('${element}')">
-    <img src="images/${element}.svg" alt="${element}" class="icon">
-    <p class="text">${element.replace(element[0], element[0].toUpperCase())}</p>
-  </button>`;
+          <img src="images/${element}.svg" alt="${element}" class="icon">
+          <p class="text">${element.replace(
+            element[0],
+            element[0].toUpperCase()
+          )}</p>
+        </button>`;
 });
+
+// Add event listener to document to detect changes and add copy buttons
+const observer = new MutationObserver(addCopyButtons);
+observer.observe(document.body, { childList: true, subtree: true });
