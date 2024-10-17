@@ -1,316 +1,129 @@
-/* CSS Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* Base Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #333;
   margin: 0;
   padding: 0;
-}
-
-/* Base Styles */
-html {
-  font-size: 100%;
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background: #ffffff;
-  color: #000000;
-  transition: background 0.3s, color 0.3s;
-}
-
-/* Font Face */
-@font-face {
-  font-family: "Dank Mono";
-  src: url("DankMono-Regular.otf") format("opentype");
-}
-
-/* Button Styles */
-.button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 15px;
-  gap: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.4s, color 0.4s, transform 0.4s;
+  height: 100vh;
 }
 
-.button .text {
-  color: #000;
-  font-weight: 700;
-  font-size: 1em;
-  transition: color 0.4s;
-}
-
-.button .icon {
-  width: 24px;
-  height: 24px;
-  transition: filter 0.4s;
-}
-
-.button:hover {
-  background-color: transparent;
-  transform: scale(1.05);
-}
-
-.button:hover .text {
-  color: #181717;
-}
-
-.button:hover .icon {
-  filter: invert(1);
-}
-
-/* Container for Buttons */
-#buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  padding: 5px;
-}
-#data li {
-  list-style-type: disc;
-  margin-left: 10px;
-}
-/* Code Block Styling */
-code {
-  font-family: "Dank Mono", monospace;
-  display: block;
-  font-style: italic;
-  color: #f8f8f2;
-  background-color: #282a36;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 5px;
-  overflow: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.copy-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.copy-button:hover {
-  background-color: #0056b3;
-}
-
-/* Header Styling */
-header {
-  background-color: #4a90e2;
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 20px;
-  text-align: center;
-  color: white;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+  width: 80%;
+  max-width: 600px;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.02);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-radius: 0 0 1em 1em;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease-in-out;
-  margin-bottom: 15px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-}
-
-header svg {
-  width: 2em;
-  cursor: pointer;
-}
-
-/* Data Section Styling */
-#data img, figure {
-  width: 65%;
-  margin: 10px !important;
-}
-
-#data h1, #data h3, #data h4 {
-  color: #000;
-  padding: 10px 0;
-}
-
-#data div {
+  padding: 10px;
+  margin: 8px 0;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
-/* Pagination Controls */
-#pagination-controls {
-  margin-top: 20px;
+li:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
-#pagination-controls button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s;
+li img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  /* border-radius: 50%; */
+  object-fit: cover;
 }
 
-#pagination-controls button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+li a {
+  text-decoration: none;
+  color: #0073e6;
+  font-size: 1em;
+  transition: color 0.3s ease;
 }
 
-/* Media Queries */
-@media (max-width: 480px) {
-  body {
-    padding: 5px;
+li a:hover {
+  text-decoration: underline;
+  color: #005bb5;
+}
+
+li a:focus {
+  outline: 2px solid #0073e6;
+  outline-offset: 2px;
+}
+
+h3 {
+  margin: 20px 0 10px;
+  font-size: 1.5em;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
   }
 
-  #data img, figure {
-    width: 100%;
-    margin: 10px !important;
-  }
-
-  header {
+  li {
     flex-direction: column;
-    gap: 0.8em;
+    align-items: flex-start;
+  }
+
+  li img {
+    margin-bottom: 10px;
+  }
+
+  li a {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1.2em;
   }
 }
 
-@media (min-width: 801px) {
-  header {
-    flex-direction: row;
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 10px;
   }
-}
 
-/* Dark Mode Styles */
-body.dark-mode {
-  background: #121212;
-  color: #e0e0e0;
-}
+  li {
+    padding: 8px;
+    margin: 6px 0;
+  }
 
-body.dark-mode header {
-  background-color: #333;
-  color: #e0e0e0;
-}
+  li a {
+    font-size: 1em;
+  }
 
-body.dark-mode .button {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-body.dark-mode .button .text {
-  color: #e0e0e0;
-}
-
-body.dark-mode .button:hover .text {
-  color: #fff;
-}
-
-body.dark-mode #data h1 {
-  color: #e0e0e0;
-}
-
-body.dark-mode #data div {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-body.dark-mode #pagination-controls button {
-  background-color: #333;
-  color: #e0e0e0;
-}
-
-body.dark-mode #pagination-controls button:hover {
-  background-color: #555;
-}
-
-body.dark-mode code {
-  background-color: #1e1e1e;
-  color: #c5c5c5;
-}
-
-body.dark-mode .copy-button {
-  background-color: #555;
-}
-
-body.dark-mode .copy-button:hover {
-  background-color: #777;
-}
-
-/* Light Mode Styles */
-body.light-mode {
-  background: #ffffff;
-  color: #000000;
-}
-
-body.light-mode header {
-  background-color: #4a90e2;
-  color: #ffffff;
-}
-
-body.light-mode .button {
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-body.light-mode .button .text {
-  color: #000000;
-}
-
-body.light-mode .button:hover .text {
-  color: #000000;
-}
-
-body.light-mode #data h1 {
-  color: #000000;
-}
-
-body.light-mode #data div {
-  background: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-body.light-mode #pagination-controls button {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-body.light-mode #pagination-controls button:hover {
-  background-color: #0056b3;
-}
-
-body.light-mode code {
-  background-color: #f5f5f5;
-  color: #000000;
-}
-
-body.light-mode .copy-button {
-  background-color: #007bff;
-}
-
-body.light-mode .copy-button:hover {
-  background-color: #0056b3;
+  h3 {
+    font-size: 1em;
+  }
 }
