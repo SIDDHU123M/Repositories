@@ -13,6 +13,6 @@ This project is a collection of repositories by SIDDHU123M.
 - [CodeHubX](https://github.com/SIDDHU123M/CodehubX)
 - [Full Stack Developer](https://github.com/SIDDHU123M/Full-Stack-Developer)
 - [Password Generator](https://siddhu123m.github.io/passwordGenerator/)
-- [Simple Code Editor]([https://siddhu123m.github.io/JS-Code-Editor/](https://siddhu123m.github.io/simple-codeEditor/))
+- [Simple Code Editor](https://siddhu123m.github.io/simple-codeEditor/)
 - [MD Viewer](https://github.com/SIDDHU123M/MD-Viewer)
 - [Weather APP](https://github.com/SIDDHU123M/WeatherAPP)
