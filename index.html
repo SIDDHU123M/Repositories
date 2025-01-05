@@ -1,74 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SIDDHU123M & CodehubX</title>
-        <meta name="description" content="Explore the repositories of SIDDHU123M on GitHub, including CodeHubX, Full Stack Developer, MD Viewer, JS Concepts, and more." />
-        <meta name="keywords" content="SIDDHU123M, CodehubX, GitHub, Repositories, Full Stack Developer, MD Viewer, JS Concepts, NodeJS, Weather APP" />
-        <link rel="shortcut icon" href="https://img.icons8.com/?size=100&id=LoL4bFzqmAa0&format=png&color=000000" type="image/x-icon" />
-        <link rel="stylesheet" href="styles.css" />
-        <script src="index.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h3>Repositories</h3>
-            <ul>
-                <a href="https://github.com/SIDDHU123M/SIDDHU123M">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000" alt="Profile Icon" />
-                        <p>My Profile</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/CodehubX">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=0DJs1m5Wz0Yn&format=png&color=000000" alt="CodeHubX Icon" />
-                        <p>CodeHubX</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/MoviesAPP/">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=lEV2xeBg4PUI&format=png&color=000000" alt="Movies APP" />
-                        <p>Movies APP</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/Full-Stack-Developer">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=JjXkZB4POgHN&format=png&color=000000" alt="Full Stack Developer Icon" />
-                        <p>Full Stack Developer</p>
-                    </li>
-                </a>
-                 <a href="https://siddhu123m.github.io/passwordGenerator/">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=119695&format=png&color=000000" alt="Password Generator" />
-                        <p>Password Generator</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/simple-codeEditor/">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=xM5NpnNBYbws&format=png&color=000000" alt="CodeEditor" />
-                        <p>Simple Code Editor</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/MD-Viewer">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=tSsoqhIYwMTk&format=png&color=000000" alt="MD Viewer Icon" />
-                        <p>MD Viewer</p>
-                    </li>
-                </a>
-                <a href="https://siddhu123m.github.io/WeatherAPP">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=RcBBZX2XlWJV&format=png&color=000000" alt="Weather App Icon" />
-                        <p>Weather App</p>
-                    </li>
-                </a>
-<!--                 <a href="https://siddhu123m.github.io/JS-concepts">
-                    <li>
-                        <img src="https://img.icons8.com/?size=100&id=PyrI7GCv8LCv&format=png&color=000000" alt="JS Concepts Icon" />
-                        <p>JS Concepts</p>
-                    </li>
-                </a> -->
-            </ul>
-        </div>
-    </body>
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>GitHub Portfolio Showcase</title>
+      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+      <script src="https://unpkg.com/three@0.132.2/build/three.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+      <style>
+            @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+            :root {
+                  --glass-bg: rgba(255, 255, 255, 0.05);
+                  --glass-border: rgba(255, 255, 255, 0.1);
+            }
+
+            body {
+                  font-family: 'Space Grotesk', sans-serif;
+                  background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+                  min-height: 100vh;
+                  overflow-x: hidden;
+            }
+
+            .glass {
+                  background: var(--glass-bg);
+                  backdrop-filter: blur(12px);
+                  border: 1px solid var(--glass-border);
+                  border-radius: 16px;
+                  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            }
+
+            #particles-js {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  z-index: -1;
+            }
+
+            .repo-card {
+                  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .repo-card:hover {
+                  transform: translateY(-8px) scale(1.02);
+                  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+            }
+
+            .language-dot {
+                  width: 12px;
+                  height: 12px;
+                  border-radius: 50%;
+                  display: inline-block;
+                  margin-right: 6px;
+            }
+
+            .loading-skeleton {
+                  background: linear-gradient(90deg, var(--glass-bg) 25%, rgba(255, 255, 255, 0.1) 50%, var(--glass-bg) 75%);
+                  background-size: 200% 100%;
+                  animation: loading 1.5s infinite;
+            }
+
+            @keyframes loading {
+                  0% {
+                        background-position: 200% 0;
+                  }
+
+                  100% {
+                        background-position: -200% 0;
+                  }
+            }
+
+            .animate-float {
+                  animation: float 6s ease-in-out infinite;
+            }
+
+            @keyframes float {
+                  0% {
+                        transform: translateY(0px);
+                  }
+
+                  50% {
+                        transform: translateY(-20px);
+                  }
+
+                  100% {
+                        transform: translateY(0px);
+                  }
+            }
+      </style>
+</head>
+
+<body class="text-white">
+      <div id="particles-js"></div>
+
+      <main class="container mx-auto px-4 py-12">
+            <header class="glass p-8 mb-12 text-center">
+                  <h1
+                        class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        GitHub Portfolio
+                  </h1>
+                  <p class="text-xl text-gray-300">Exploring my digital craftsmanship through code</p>
+            </header>
+
+            <div id="repos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <!-- Loading skeletons -->
+            </div>
+      </main>
+
+      <script>
+            // Initialize Particles.js
+            particlesJS.load('particles-js', {
+                  particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#ffffff" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+                        move: { enable: true, speed: 2, direction: "none", random: true, straight: false, out_mode: "out" }
+                  }
+            });
+
+            // GitHub Repository Data Fetching
+            const GITHUB_USERNAME = 'SIDDHU123M'; // Replace with your GitHub username
+            const reposGrid = document.getElementById('repos-grid');
+
+            // Create loading skeletons
+            for (let i = 0; i < 7; i++) {
+                  reposGrid.innerHTML += `
+                <div class="glass p-6 loading-skeleton">
+                    <div class="h-6 w-3/4 bg-gray-700 rounded mb-4"></div>
+                    <div class="h-4 w-full bg-gray-700 rounded mb-2"></div>
+                    <div class="h-4 w-5/6 bg-gray-700 rounded mb-4"></div>
+                    <div class="flex justify-between">
+                        <div class="h-4 w-1/4 bg-gray-700 rounded"></div>
+                        <div class="h-4 w-1/4 bg-gray-700 rounded"></div>
+                    </div>
+                </div>
+            `;
+            }
+
+            // Fetch repositories
+            async function fetchRepositories() {
+                  try {
+                        const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`);
+                        const repos = await response.json();
+                        reposGrid.innerHTML = '';
+
+                        const languageColors = {
+                              JavaScript: '#f1e05a',
+                              Python: '#3572A5',
+                              HTML: '#e34c26',
+                              CSS: '#563d7c',
+                              TypeScript: '#2b7489',
+                              Java: '#b07219'
+                        };
+
+                        repos.slice(0, 7).forEach(async (repo, index) => {
+                              const languagesResponse = await fetch(repo.languages_url);
+                              const languages = await languagesResponse.json();
+                              const primaryLanguage = Object.keys(languages)[0] || 'None';
+
+                              const card = document.createElement('div');
+                              card.className = 'glass p-6 repo-card';
+                              card.style.animationDelay = `${index * 0.1}s`;
+
+                              card.innerHTML = `
+                        <h3 class="text-xl font-bold mb-2 flex items-center">
+                            <i class="bi bi-code-square mr-2"></i>
+                            <a href="${repo.html_url}" class="hover:text-blue-400 transition-colors" target="_blank">
+                                ${repo.name}
+                            </a>
+                        </h3>
+                        <p class="text-gray-300 mb-4 h-20 overflow-hidden">${repo.description || 'No description available'}</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="language-dot" style="background-color: ${languageColors[primaryLanguage] || '#888'}"></span>
+                                <span class="text-sm text-gray-400">${primaryLanguage}</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center text-sm">
+                                    <i class="bi bi-star-fill text-yellow-400 mr-1"></i>
+                                    ${repo.stargazers_count}
+                                </span>
+                                <span class="flex items-center text-sm">
+                                    <i class="bi bi-git-branch text-gray-400 mr-1"></i>
+                                    ${repo.forks_count}
+                                </span>
+                            </div>
+                        </div>
+                        ${repo.homepage ? `
+                            <a href="${repo.homepage}" class="mt-4 inline-block text-blue-400 hover:text-blue-300 transition-colors" target="_blank">
+                                <i class="bi bi-box-arrow-up-right mr-1"></i>Live Demo
+                            </a>
+                        ` : ''}
+                    `;
+
+                              reposGrid.appendChild(card);
+                        });
+                  } catch (error) {
+                        console.error('Error fetching repositories:', error);
+                        reposGrid.innerHTML = `
+                    <div class="col-span-full text-center text-red-400 glass p-6">
+                        <i class="bi bi-exclamation-triangle text-2xl mb-2"></i>
+                        <p>Failed to load repositories. Please try again later.</p>
+                    </div>
+                `;
+                  }
+            }
+
+            fetchRepositories();
+      </script>
+</body>
+
 </html>
